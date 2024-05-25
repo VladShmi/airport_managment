@@ -3,14 +3,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class Pasajero extends Persona {
+    private String nombre;
+    private String apellido;
     private List<Vuelo> vuelos;
     private Integer nroDePasaporte;
     private Pais nacionalidad;
 
     public Pasajero(String nombre, String apellido) {
-        super.setNombre(nombre);
-        super.setApellido(apellido);
-        this.vuelos = new ArrayList();
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     public Integer getNroDePasaporte() {
@@ -42,8 +43,24 @@ public class Pasajero extends Persona {
     }
 
     public Integer cantVecesQueVisitaste(Ciudad unaCiudad) {
-        return (int)this.vuelos.stream().filter((v) -> {
+        return (int) this.vuelos.stream().filter((v) -> {
             return v.tuDestinoEs(unaCiudad);
         }).count();
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return this.apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 }

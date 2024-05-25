@@ -61,4 +61,8 @@ public class Viaje {
     public Double duracionTotalEnMins() {
         return this.duracionTotalDeEscalasEnMins() + this.duracionTotalDeVuelosEnMins();
     }
+
+    public void agregarVuelo(Vuelo vuelo) {
+        this.vuelos.add(vuelo);
+    }
 }

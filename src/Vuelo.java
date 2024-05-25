@@ -1,100 +1,73 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class Vuelo {
-    private Aeropuerto origen;
-    private Aeropuerto destino;
+    private String origen;
+    private String destino;
+    private double duracionEstimadaEnMins;
+    private LocalDateTime fechaDeLlegadaAproximada;
     private LocalDateTime fecha;
-    private Double duracionEstimadaEnMins;
-    private Integer cantAsientosOfrecidos;
-    private Avion avion;
-    private List<Pasajero> pasajeros = new ArrayList();
-    private Tripulacion tripulacion;
+    private List<Pasajero> pasajeros;
 
     public Vuelo() {
+        this.pasajeros = new ArrayList<>();
     }
 
-    public Aeropuerto getOrigen() {
+    public String getOrigen() {
         return this.origen;
     }
 
-    public void setOrigen(Aeropuerto origen) {
+    public void setOrigen(String origen) {
         this.origen = origen;
     }
 
-    public Aeropuerto getDestino() {
+    public String getDestino() {
         return this.destino;
     }
 
-    public void setDestino(Aeropuerto destino) {
+    public void setDestino(String destino) {
         this.destino = destino;
-        destino.agregarVuelos(new Vuelo[]{this});
-    }
-
-    public LocalDateTime getFecha() {
-        return this.fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-
-    public Double getDuracionEstimadaEnMins() {
-        return this.duracionEstimadaEnMins;
-    }
-
-    public void setDuracionEstimadaEnMins(Double duracionEstimadaEnMins) {
-        this.duracionEstimadaEnMins = duracionEstimadaEnMins;
-    }
-
-    public Integer getCantAsientosOfrecidos() {
-        return this.cantAsientosOfrecidos;
-    }
-
-    public void setCantAsientosOfrecidos(Integer cantAsientosOfrecidos) {
-        this.cantAsientosOfrecidos = cantAsientosOfrecidos;
-    }
-
-    public Avion getAvion() {
-        return this.avion;
-    }
-
-    public void setAvion(Avion avion) {
-        this.avion = avion;
     }
 
     public List<Pasajero> getPasajeros() {
         return this.pasajeros;
     }
 
-    public Tripulacion getTripulacion() {
-        return this.tripulacion;
+    public LocalDateTime getFecha() {
+        return this.fecha;
     }
 
-    public void setTripulacion(Tripulacion tripulacion) {
-        tripulacion.agregarVuelos(new Vuelo[]{this});
-        this.tripulacion = tripulacion;
+    public void agregarPasajero(Pasajero pasajero) {
+        this.pasajeros.add(pasajero);
     }
 
-    public void agregarPasajeros(Pasajero... pasajeros) {
-        Collections.addAll(this.pasajeros, pasajeros);
+    public boolean tuDestinoEs(Ciudad ciudad) {
+        return this.destino.equals(ciudad.getNombre());
     }
 
-    public LocalDateTime fechaDeLlegadaAproximada() {
-        return this.fecha.plusMinutes(this.duracionEstimadaEnMins.longValue());
+    public double getDuracionEstimadaEnMins() {
+        return this.duracionEstimadaEnMins;
     }
 
-    public Double capacidadRealOcupadaPorPasajeros() {
-        return (double)this.cantPasajeros() * 100.0 / (double)this.avion.getCantAsientos();
+    public void setDuracionEstimadaEnMins(double duracionEstimadaEnMins) {
+        this.duracionEstimadaEnMins = duracionEstimadaEnMins;
     }
 
-    public Integer cantPasajeros() {
+    public int cantPasajeros() {
         return this.pasajeros.size();
     }
 
-    public boolean tuDestinoEs(Ciudad unaCiudad) {
-        return this.destino.estasEn(unaCiudad);
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    public LocalDateTime fechaDeLlegadaAproximada() {
+        return this.fechaDeLlegadaAproximada;
+    }
+
+    public void setFechaDeLlegadaAproximada(LocalDateTime fechaDeLlegadaAproximada) {
+        this.fechaDeLlegadaAproximada = fechaDeLlegadaAproximada;
     }
 }
