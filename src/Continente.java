@@ -1,10 +1,30 @@
+/**
+ * El enum Continente representa los diferentes continentes del mundo.
+ */
 public enum Continente {
+    /**
+     * América.
+     */
     AMERICA,
-    ASIA,
-    EUROPA,
-    AFRICA,
-    OCEANIA;
 
-    private Continente() {
-    }
+    /**
+     * Asia.
+     */
+    ASIA,
+
+    /**
+     * Europa.
+     */
+    EUROPA,
+
+    /**
+     * África.
+     */
+    AFRICA,
+
+    /**
+     * Oceanía.
+     */
+    OCEANIA;
 }
+

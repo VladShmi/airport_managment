@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
+/**
+ * La clase principal para ejecutar el sistema de gestión de aerolíneas.
+ */
 public class Main {
+    /**
+     * El método principal para ejecutar la aplicación.
+     *
+     * @param args Los argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Aerolinea aerolinea = new Aerolinea();
