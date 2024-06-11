@@ -70,6 +70,14 @@ public class Pasajero extends Persona {
     }
 
     /**
+     * Elimina un vuelo de la lista de vuelos del pasajero.
+     * @param vuelo El vuelo a eliminar.
+     */
+    public void eliminarVuelo(Vuelo vuelo) {
+        this.vuelos.remove(vuelo);
+    }
+
+    /**
      * Obtiene la cantidad total de vuelos del pasajero.
      * @return La cantidad total de vuelos del pasajero.
      */

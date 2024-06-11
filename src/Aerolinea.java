@@ -2,22 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * La clase Aerolinea representa una aerolínea que gestiona una lista de vuelos.
+ * La clase Aerolinea representa una aerolínea con un nombre, una lista de vuelos y una lista de pasajeros.
  */
 public class Aerolinea {
-    private List<Vuelo> vuelos;
+    private String nombre; // El nombre de la aerolínea.
+    private List<Vuelo> vuelos = new ArrayList<>(); // La lista de vuelos de la aerolínea.
+    private List<Pasajero> pasajeros = new ArrayList<>(); // La lista de pasajeros de la aerolínea.
 
     /**
      * Constructor de la clase Aerolinea.
-     * Inicializa la lista de vuelos.
+     * @param nombre El nombre de la aerolínea.
      */
-    public Aerolinea() {
-        this.vuelos = new ArrayList<>();
+    public Aerolinea(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
-     * Agrega un vuelo a la lista de vuelos.
-     *
+     * Agrega un vuelo a la lista de vuelos de la aerolínea.
      * @param vuelo El vuelo a agregar.
      */
     public void agregarVuelo(Vuelo vuelo) {
@@ -25,47 +26,26 @@ public class Aerolinea {
     }
 
     /**
-     * Agrega un pasajero a un vuelo específico.
-     *
-     * @param origen    El origen del vuelo.
-     * @param destino   El destino del vuelo.
-     * @param pasajero  El pasajero a agregar al vuelo.
+     * Elimina un vuelo de la lista de vuelos de la aerolínea.
+     * @param vuelo El vuelo a eliminar.
      */
-    public void agregarPasajeroAVuelo(String origen, String destino, Pasajero pasajero) {
-        for (Vuelo vuelo : vuelos) {
-            if (vuelo.getOrigen().equals(origen) && vuelo.getDestino().equals(destino)) {
-                vuelo.getPasajeros().add(pasajero);
-                return;
-            }
-        }
-        System.out.println("No se encontró el vuelo con el origen " + origen + " y destino " + destino);
+    public void eliminarVuelo(Vuelo vuelo) {
+        this.vuelos.remove(vuelo);
     }
 
     /**
-     * Muestra todos los vuelos de la aerolínea.
+     * Agrega un pasajero a la lista de pasajeros de la aerolínea.
+     * @param pasajero El pasajero a agregar.
      */
-    public void mostrarVuelos() {
-        for (Vuelo vuelo : this.vuelos) {
-            System.out.println("Origen: " + vuelo.getOrigen() + ", Destino: " + vuelo.getDestino());
-        }
+    public void agregarPasajero(Pasajero pasajero) {
+        this.pasajeros.add(pasajero);
     }
 
     /**
-     * Muestra todos los pasajeros de un vuelo específico.
-     *
-     * @param origen    El origen del vuelo.
-     * @param destino   El destino del vuelo.
+     * Elimina un pasajero de la lista de pasajeros de la aerolínea.
+     * @param pasajero El pasajero a eliminar.
      */
-    public void mostrarPasajerosDeVuelo(String origen, String destino) {
-        for (Vuelo vuelo : vuelos) {
-            if (vuelo.getOrigen().equals(origen) && vuelo.getDestino().equals(destino)) {
-                List<Pasajero> pasajeros = vuelo.getPasajeros();
-                for (Pasajero pasajero : pasajeros) {
-                    System.out.println(pasajero.getNombre() + " " + pasajero.getApellido());
-                }
-                return;
-            }
-        }
-        System.out.println("No se encontró el vuelo con el origen " + origen + " y destino " + destino);
+    public void eliminarPasajero(Pasajero pasajero) {
+        this.pasajeros.remove(pasajero);
     }
 }

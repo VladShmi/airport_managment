@@ -8,7 +8,7 @@ import java.util.List;
 public class Pais {
     private String nombre; // El nombre del país.
     private Continente continente; // El continente al que pertenece el país.
-    private List<Ciudad> ciudades = new ArrayList(); // La lista de ciudades en el país.
+    private List<Ciudad> ciudades = new ArrayList<>(); // La lista de ciudades en el país.
 
     /**
      * Constructor de la clase Pais.
@@ -58,5 +58,13 @@ public class Pais {
      */
     public void agregarCiudades(Ciudad... ciudades) {
         Collections.addAll(this.ciudades, ciudades);
+    }
+
+    /**
+     * Elimina una ciudad del país.
+     * @param ciudad La ciudad a eliminar.
+     */
+    public void eliminarCiudad(Ciudad ciudad) {
+        this.ciudades.remove(ciudad);
     }
 }

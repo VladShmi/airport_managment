@@ -1,41 +1,51 @@
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * La clase Aeropuerto representa un aeropuerto con sus vuelos y su ciudad.
+ * La clase Aeropuerto representa un aeropuerto con un nombre, una lista de vuelos y una lista de aerolíneas.
  */
 public class Aeropuerto {
-    private String nombre;
-    private String codigoInternacional;
-    private Ciudad ciudad;
-    private List<Vuelo> vuelos;
-    private LocalDateTime fechaDeLlegadaAproximada;
+    private String nombre; // El nombre del aeropuerto.
+    private List<Vuelo> vuelos = new ArrayList<>(); // La lista de vuelos en el aeropuerto.
+    private List<Aerolinea> aerolineas = new ArrayList<>(); // La lista de aerolíneas en el aeropuerto.
 
     /**
      * Constructor de la clase Aeropuerto.
-     *
-     * @param nombre                El nombre del aeropuerto.
-     * @param codigoInternacional   El código internacional del aeropuerto.
-     * @param ciudad                La ciudad donde se encuentra el aeropuerto.
+     * @param nombre El nombre del aeropuerto.
      */
-    public Aeropuerto(String nombre, String codigoInternacional, Ciudad ciudad) {
-        this.ciudad = ciudad;
+    public Aeropuerto(String nombre) {
         this.nombre = nombre;
-        this.codigoInternacional = codigoInternacional;
-        this.vuelos = new ArrayList<>();
-        ciudad.agregarAeropuertos(new Aeropuerto[]{this});
     }
 
     /**
-     * Obtiene una lista de vuelos que llegaron al aeropuerto en una fecha específica.
-     *
-     * @param dia La fecha en la que se desea buscar los vuelos.
-     * @return Una lista de vuelos que llegaron en la fecha especificada.
+     * Agrega un vuelo a la lista de vuelos del aeropuerto.
+     * @param vuelo El vuelo a agregar.
      */
-    public List<Vuelo> vuelosQueLlegaronElDia(LocalDate dia) {
-        return this.vuelos.stream().filter(v -> v.fechaDeLlegadaAproximada().toLocalDate().isEqual(dia)).collect(Collectors.toList());
+    public void agregarVuelo(Vuelo vuelo) {
+        this.vuelos.add(vuelo);
+    }
+
+    /**
+     * Elimina un vuelo de la lista de vuelos del aeropuerto.
+     * @param vuelo El vuelo a eliminar.
+     */
+    public void eliminarVuelo(Vuelo vuelo) {
+        this.vuelos.remove(vuelo);
+    }
+
+    /**
+     * Agrega una aerolínea a la lista de aerolíneas del aeropuerto.
+     * @param aerolinea La aerolínea a agregar.
+     */
+    public void agregarAerolinea(Aerolinea aerolinea) {
+        this.aerolineas.add(aerolinea);
+    }
+
+    /**
+     * Elimina una aerolínea de la lista de aerolíneas del aeropuerto.
+     * @param aerolinea La aerolínea a eliminar.
+     */
+    public void eliminarAerolinea(Aerolinea aerolinea) {
+        this.aerolineas.remove(aerolinea);
     }
 }
