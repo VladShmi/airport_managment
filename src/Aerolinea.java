@@ -48,4 +48,46 @@ public class Aerolinea {
     public void eliminarPasajero(Pasajero pasajero) {
         this.pasajeros.remove(pasajero);
     }
+
+    /**
+     * Agrega un pasajero a un vuelo específico de la aerolínea.
+     * @param origen El origen del vuelo.
+     * @param destino El destino del vuelo.
+     * @param pasajero El pasajero a agregar al vuelo.
+     */
+    public void agregarPasajeroAVuelo(String origen, String destino, Pasajero pasajero) {
+        for (Vuelo vuelo : vuelos) {
+            if (vuelo.getOrigen().equals(origen) && vuelo.getDestino().equals(destino)) {
+                vuelo.agregarPasajero(pasajero);
+                return;
+            }
+        }
+        System.out.println("No se encontró el vuelo con el origen y destino especificados.");
+    }
+
+    /**
+     * Muestra la información de todos los vuelos de la aerolínea.
+     */
+    public void mostrarVuelos() {
+        for (Vuelo vuelo : vuelos) {
+            System.out.println("Origen: " + vuelo.getOrigen() + ", Destino: " + vuelo.getDestino());
+        }
+    }
+
+    /**
+     * Muestra la información de los pasajeros de un vuelo específico.
+     * @param origen El origen del vuelo.
+     * @param destino El destino del vuelo.
+     */
+    public void mostrarPasajerosDeVuelo(String origen, String destino) {
+        for (Vuelo vuelo : vuelos) {
+            if (vuelo.getOrigen().equals(origen) && vuelo.getDestino().equals(destino)) {
+                for (Pasajero pasajero : vuelo.getPasajeros()) {
+                    System.out.println("Nombre: " + pasajero.getNombre() + ", Apellido: " + pasajero.getApellido());
+                }
+                return;
+            }
+        }
+        System.out.println("No se encontró el vuelo con el origen y destino especificados.");
+    }
 }

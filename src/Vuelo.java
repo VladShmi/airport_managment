@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Vuelo {
     private LocalDateTime fechaDeLlegadaAproximada; // La fecha de llegada aproximada del vuelo.
     private LocalDateTime fecha; // La fecha de salida del vuelo.
     private List<Pasajero> pasajeros; // La lista de pasajeros del vuelo.
+    private LocalDate fechaLlegada; // La fecha de llegada del vuelo.
 
     /**
      * Constructor por defecto de la clase Vuelo.
@@ -69,6 +71,30 @@ public class Vuelo {
     }
 
     /**
+     * Establece la fecha de salida del vuelo.
+     * @param fecha La nueva fecha de salida del vuelo.
+     */
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * Obtiene la fecha de llegada del vuelo.
+     * @return La fecha de llegada del vuelo.
+     */
+    public LocalDate getFechaLlegada() {
+        return this.fechaLlegada;
+    }
+
+    /**
+     * Establece la fecha de llegada del vuelo.
+     * @param fechaLlegada La nueva fecha de llegada del vuelo.
+     */
+    public void setFechaLlegada(LocalDate fechaLlegada) {
+        this.fechaLlegada = fechaLlegada;
+    }
+
+    /**
      * Agrega un pasajero al vuelo.
      * @param pasajero El pasajero a agregar.
      */
@@ -107,14 +133,6 @@ public class Vuelo {
      */
     public int cantPasajeros() {
         return this.pasajeros.size();
-    }
-
-    /**
-     * Establece la fecha de salida del vuelo.
-     * @param fecha La nueva fecha de salida del vuelo.
-     */
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
     }
 
     /**

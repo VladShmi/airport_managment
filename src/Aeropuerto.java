@@ -1,5 +1,7 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * La clase Aeropuerto representa un aeropuerto con un nombre, una lista de vuelos y una lista de aerolíneas.
@@ -47,5 +49,16 @@ public class Aeropuerto {
      */
     public void eliminarAerolinea(Aerolinea aerolinea) {
         this.aerolineas.remove(aerolinea);
+    }
+
+    /**
+     * Obtiene una lista de vuelos que llegaron al aeropuerto en una fecha específica.
+     * @param dia La fecha de llegada de los vuelos a buscar.
+     * @return Una lista de vuelos que llegaron en la fecha especificada.
+     */
+    public List<Vuelo> vuelosQueLlegaronElDia(LocalDate dia) {
+        return this.vuelos.stream()
+                .filter(v -> dia.equals(v.getFechaLlegada()))
+                .collect(Collectors.toList());
     }
 }
